@@ -1,0 +1,35 @@
+<div class="bg-light p-5">
+    <div class="container">
+        <div class="row">
+            <table class="table mb-2 mt-3">
+                <thead>
+                  <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">NAME</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">password</th>
+                    <th scope="col">Action</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let user of users">
+                    <th scope="row">{{user.id}}</th>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.password }}</td>
+                    <td>
+                      <a class="btn btn-warning mx-1" [routerLink]="['/users/',user.id]" >Edite user</a>
+                      <button class="btn btn-danger mx-1" (click)="removeUser(user.id)">delete user</button>
+
+                    </td>
+                  </tr>
+                 
+                 
+                </tbody>
+              </table>
+        </div>
+        <a [routerLink]="['/users/new']" class="btn btn-outline-danger mt-5 p-2">Add new user</a>
+
+    </div>
+</div>

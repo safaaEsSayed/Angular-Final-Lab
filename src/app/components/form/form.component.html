@@ -1,0 +1,86 @@
+<div class="mt-5 p-4">
+    <div class="container bg-light p-5">
+      <form [formGroup]="loginForm" (ngSubmit)="login($event)">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            
+            placeholder="Enter Your Name"
+            formControlName="name"
+            
+          />
+          <ng-container *ngIf="getName.touched" id="emailHelp">
+            <p *ngIf="getName.hasError('required')" class="form-text text-danger">
+              Name is Required
+            </p>
+            <p *ngIf="getName.hasError('pattern')" class="form-text text-danger">
+              Name Must be a string and char leng == 4
+            </p>
+          </ng-container>
+        </div>
+        <div class="mb-3">
+          <label for="test" class="form-label">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="test"
+            placeholder="Enter Your Email"
+            formControlName="email"
+          />
+          <ng-container
+            *ngIf="getEmail.touched"
+            id="test2"
+            class="form-text text-danger"
+          >
+            <p
+              *ngIf="getEmail.hasError('required')"
+              class="form-text text-danger"
+            >
+              email is Required
+            </p>
+            <p *ngIf="getEmail.hasError('email')" class="form-text text-danger">
+              email is not Valid
+            </p>
+          </ng-container>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            placeholder="Enter Your Password"
+            formControlName="password"
+          />
+          <ng-container
+            *ngIf="getPassword.touched"
+            id="emailHelp"
+            class="form-text text-danger"
+          >
+            <p
+              *ngIf="getPassword.hasError('required')"
+              class="form-text text-danger"
+            >
+              password is Required
+            </p>
+  
+            <p
+              *ngIf="getPassword.hasError('minlength')"
+              class="form-text text-danger"
+            >
+              password must be greater than 3
+            </p>
+          </ng-container>
+        </div>
+  
+        <button type="submit" class="btn btn-danger">
+          {{ userId ? "Edit user" : "Add New User" }}
+        </button>
+      </form>
+    </div>
+  </div>
+  
